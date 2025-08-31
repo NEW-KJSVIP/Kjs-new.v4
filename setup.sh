@@ -106,7 +106,7 @@ sts="${Error}"
 fi
 echo -e "\e[32mloading...\e[0m"
 clear
-REPO="https://raw.githubusercontent.com/kjsstore/kjs-new/main/"
+REPO="https://raw.githubusercontent.com/NEW-KJSVIP/kjs-new.v4/main/"
 start=$(date +%s)
 secs_to_human() {
 echo "Installation time : $((${1} / 3600)) hours $(((${1} / 60) % 60)) minute's $((${1} % 60)) seconds"
@@ -685,7 +685,7 @@ systemctl start udp-custom &>/dev/null
 
 echo enable service udp-custom
 systemctl enable udp-custom &>/dev/null
-print_success "UDP-CUSTOM BY NEWBIE STORE VPN"
+print_success "UDP-CUSTOM BY METS STORE VPN"
 clear
 print_install "MEMASANG NOOBZVPNS"
 cd
@@ -700,7 +700,7 @@ systemctl start noobzvpns &>/dev/null
 
 echo enable service noobzvpns
 systemctl enable noobzvpns &>/dev/null
-print_success "NOOBZVPNS BY NEWBIE STORE"
+print_success "NOOBZVPNS BY METS STORE"
 }
 function ins_restart(){
 clear
@@ -740,7 +740,7 @@ clear
 print_install "Memasang Menu Packet"
 apt install p7zip-full -y
 wget ${REPO}Cdy/menu.zip
-wget -q -O /usr/bin/enc "https://raw.githubusercontent.com/kjsstore/kjs-new/main/Enc/encrypt" ; chmod +x /usr/bin/enc
+wget -q -O /usr/bin/enc "https://raw.githubusercontent.com/NEW-KJSVIP/kjs-new.v4/main/Enc/encrypt" ; chmod +x /usr/bin/enc
 7z x -pas123@Newbie menu.zip
 chmod +x menu/*
 enc menu/*
