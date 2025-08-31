@@ -1,9 +1,9 @@
 ### INSTALL SCRIPT 
-<pre><code>apt update -y && apt install -y wget curl jq at screen && wget -q https://raw.githubusercontent.com/NEW-KJSVIP/kjs-new.v4/main/setup.sh && chmod +x setup.sh && screen -S install ./setup.sh
+<pre><code>apt update -y && apt install -y wget curl jq at screen && wget -q https://raw.githubusercontent.com/NEW-KJSVIP/Kjs-new.v4/main/setup.sh && chmod +x setup.sh && screen -S install ./setup.sh
 </code></pre>
 
 ### PERINTAH UPDATE 
-<pre><code>wget -q https://raw.githubusercontent.com/NEW-KJSVIP/kjs-new.v4/main/update.sh && chmod +x update.sh && ./update.sh</code></pre>
+<pre><code>wget -q https://raw.githubusercontent.com/NEW-KJSVIP/Kjs-new.v4/main/update.sh && chmod +x update.sh && ./update.sh</code></pre>
 
 ### FITUR TAMBAHAN
 - Tambah Swap 1GiB
