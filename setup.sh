@@ -24,7 +24,7 @@ green='\e[0;32m'
 TIME=$(date '+%d %b %Y')
 ipsaya=$(wget -qO- ipinfo.io/ip)
 TIMES="10"
-eval $(wget -qO- "https://raw.githubusercontent.com/NEW-KJSVIP/kjs-new.v4/main/Fls/botkey")
+eval $(wget -qO- "https://raw.githubusercontent.com/NEW-KJSVIP/Kjs-new.v4/main/Fls/botkey")
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 clear
 export IP=$( curl -sS icanhazip.com )
@@ -106,7 +106,7 @@ sts="${Error}"
 fi
 echo -e "\e[32mloading...\e[0m"
 clear
-REPO="https://raw.githubusercontent.com/NEW-KJSVIP/kjs-new.v4/main/"
+REPO="https://raw.githubusercontent.com/NEW-KJSVIP/Kjs-new.v4/main/"
 start=$(date +%s)
 secs_to_human() {
 echo "Installation time : $((${1} / 3600)) hours $(((${1} / 60) % 60)) minute's $((${1} % 60)) seconds"
@@ -445,7 +445,7 @@ print_success "Password SSH"
 function udp_mini(){
 clear
 print_install "Memasang Service limit Quota"
-wget -q raw.githubusercontent.com/NEW-KJSVIP/kjs-new.v4/main/Fls/limit.sh && chmod +x limit.sh && ./limit.sh
+wget -q raw.githubusercontent.com/NEW-KJSVIP/Kjs-new.v4/main/Fls/limit.sh && chmod +x limit.sh && ./limit.sh
 mkdir -p /usr/local/kyt/
 wget -q -O /usr/local/kyt/udp-mini "${REPO}Fls/udp-mini"
 chmod +x /usr/local/kyt/udp-mini
@@ -740,7 +740,7 @@ clear
 print_install "Memasang Menu Packet"
 apt install p7zip-full -y
 wget ${REPO}Cdy/menu.zip
-wget -q -O /usr/bin/enc "https://raw.githubusercontent.com/NEW-KJSVIP/kjs-new.v4/main/Enc/encrypt" ; chmod +x /usr/bin/enc
+wget -q -O /usr/bin/enc "https://raw.githubusercontent.com/NEW-KJSVIP/Kjs-new.v4/main/Enc/encrypt" ; chmod +x /usr/bin/enc
 7z x -pas123@Newbie menu.zip
 chmod +x menu/*
 enc menu/*
@@ -751,7 +751,7 @@ rm -rf /usr/local/sbin/*~
 rm -rf /usr/local/sbin/gz*
 rm -rf /usr/local/sbin/*.bak
 rm -rf /usr/local/sbin/m-noobz
-wget https://raw.githubusercontent.com/NEW-KJSVIP/kjs-new.v4/main/Cfg/m-noobz 
+wget https://raw.githubusercontent.com/NEW-KJSVIP/Kjs-new.v4/main/Cfg/m-noobz 
 cp m-noobz /usr/local/sbin
 rm m-noobz*
 chmod +x /usr/local/sbin/m-noobz
