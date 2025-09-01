@@ -24,13 +24,13 @@ apt update -y && apt upgrade -y
 apt install neofetch -y
 apt install -y python3 python3-pip git
 cd /usr/bin
-wget https://raw.githubusercontent.com/NEW-KJSVIP/kjs-new.v4/main/Bot/bot.zip
+wget https://raw.githubusercontent.com/NEW-KJSVIP/Kjs-new.v4/main/Bot/bot.zip
 unzip bot.zip
 mv bot/* /usr/bin
 chmod +x /usr/bin/*
 rm -rf bot.zip
 clear
-wget https://raw.githubusercontent.com/NEW-KJSVIP/kjs-new.v4/main/Bot/kyt.zip
+wget https://raw.githubusercontent.com/NEW-KJSVIP/Kjs-new.v4/main/Bot/kyt.zip
 unzip kyt.zip
 pip3 install -r kyt/requirements.txt
 }
@@ -52,12 +52,12 @@ rm bot.* >/dev/null
 rm *.session >/dev/null
     python3 -m venv kyt_env
     source kyt_env/bin/activate
-    wget https://raw.githubusercontent.com/NEW-KJSVIP/kjs-new.v4/main/Bot/bot.zip
+    wget https://raw.githubusercontent.com/NEW-KJSVIP/Kjs-new.v4/main/Bot/bot.zip
     unzip bot.zip
     mv bot/* /usr/bin
     chmod +x /usr/bin/*
     rm -rf bot.zip
-    wget https://raw.githubusercontent.com/NEW-KJSVIP/kjs-new.v4/main/Bot/kyt.zip
+    wget https://raw.githubusercontent.com/NEW-KJSVIP/Kjs-new.v4/main/Bot/kyt.zip
     unzip kyt.zip
     pip install --upgrade pip
     pip install -r kyt/requirements.txt
