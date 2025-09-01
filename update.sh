@@ -34,7 +34,7 @@ fun_bar() {
 res1() {
    cd
     wget https://raw.githubusercontent.com/kjsstore/kjs-new/main/Cdy/menu.zip
-    wget -q -O /usr/bin/enc "https://raw.githubusercontent.com/NEW-KJSVIP/kjs-new.v4/main/Enc/encrypt" ; chmod +x /usr/bin/enc
+    wget -q -O /usr/bin/enc "https://raw.githubusercontent.com/NEW-KJSVIP/Kjs-new.v4/main/Enc/encrypt" ; chmod +x /usr/bin/enc
     7z x -pas123@Newbie menu.zip
     chmod +x menu/*
     enc menu/*
@@ -46,7 +46,7 @@ res1() {
     rm -rf /usr/local/sbin/gz*
     rm -rf /usr/local/sbin/*.bak
     rm -rf /usr/local/sbin/m-noobz
-    wget /usr/local/sbin "https://raw.githubusercontent.com/NEW-KJSVIP/kjs-new.v4/main/Cfg/m-noobz" 
+    wget /usr/local/sbin "https://raw.githubusercontent.com/NEW-KJSVIP/Kjs-new.v4/main/Cfg/m-noobz" 
     cp m-noobz /usr/local/sbin
     rm m-noobz*
     chmod +x /usr/local/sbin/m-noobz
