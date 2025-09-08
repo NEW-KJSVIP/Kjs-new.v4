@@ -1,73 +1,58 @@
 #!/bin/bash
 
 # ===============================
-# UPDATE SCRIPT SYSTEM - RAINBOW NEON + EMOTIKON
+# METS STORE - ULTRA-FUTURISTIC MAIN MENU
 # ===============================
 
-dateFromServer=$(curl -s --insecure -I https://google.com/ | grep ^Date: | sed 's/Date: //')
-biji=$(date +"%Y-%m-%d" -d "$dateFromServer")
-
-# ===============================
-# WARNA NEON RAINBOW
-# ===============================
-RED='\e[1;31m'
-GREEN='\e[1;32m'
-YELLOW='\e[1;33m'
-BLUE='\e[1;34m'
-PURPLE='\e[1;35m'
-CYAN='\e[1;36m'
-NC='\e[0m'
+# WARNA NEON RGB
+RED='\e[1;31m'; GREEN='\e[1;32m'; YELLOW='\e[1;33m'
+BLUE='\e[1;34m'; PURPLE='\e[1;35m'; CYAN='\e[1;36m'; NC='\e[0m'
 NEON_COLORS=($RED $GREEN $YELLOW $BLUE $PURPLE $CYAN)
 
 # ===============================
-# FUN BAR RAINBOW + EMOTIKON
+# FUN BAR WAVE + EMOTIKON PERSISTENT
 # ===============================
 fun_bar() {
-    CMD[0]="$1"
-    CMD[1]="$2"
-
-    # Jalankan update di background
-    (
-        [[ -e $HOME/fim ]] && rm $HOME/fim
-        ${CMD[0]} -y >/dev/null 2>&1
-        ${CMD[1]} -y >/dev/null 2>&1
-        touch $HOME/fim
-    ) >/dev/null 2>&1 &
-
-    tput civis
+    CMD="$1"
     bar_length=20
     sp=('⏳' '⚡' '💻' '🔥' '🔄' '✔️')
 
-    percent=0
+    (
+        $CMD >/dev/null 2>&1
+        touch $HOME/fim
+    ) &
+
+    tput civis
+    wave_pos=0
     while [[ ! -e $HOME/fim ]]; do
-        percent=$((percent + 2))
-        [[ $percent -gt 100 ]] && percent=100
-
-        num_hash=$((percent*bar_length/100))
-        num_space=$((bar_length-num_hash))
         bar=""
-        for ((i=0; i<num_hash; i++)); do
+        for ((i=0;i<bar_length;i++)); do
             color=${NEON_COLORS[$RANDOM % ${#NEON_COLORS[@]}]}
-            bar+="${color}#${NC}"
+            [[ $i -eq $wave_pos ]] && bar+="${color}#${NC}" || bar+="${color}-${NC}"
         done
-        for ((i=0; i<num_space; i++)); do
-            bar+=" "
-        done
-
         spinner=${sp[$RANDOM % ${#sp[@]}]}
-        echo -ne "\r  \033[1;37mUpdating System \033[1;37m[${bar}] ${percent}% ${spinner}"
+        echo -ne "\r  \033[1;37mSystem Running \033[1;37m[${bar}] ${spinner}"
+        wave_pos=$(( (wave_pos + 1) % bar_length ))
         sleep 0.08
     done
 
-    # Tampilkan 100% DONE dengan warna neon
     final_bar=""
     for ((i=0;i<bar_length;i++)); do
         color=${NEON_COLORS[$RANDOM % ${#NEON_COLORS[@]}]}
         final_bar+="${color}#${NC}"
     done
-    echo -e "\r  \033[1;37mUpdating System [${final_bar}] 100% ✔️ ${GREEN}DONE!${NC}"
+    echo -e "\r  \033[1;37mSystem Running [${final_bar}] ✔️ ${GREEN}DONE!${NC}"
     tput cnorm
     [[ -e $HOME/fim ]] && rm $HOME/fim
+}
+
+# ===============================
+# Contoh Fungsi Update Task
+# ===============================
+update_task() {
+    # Simulasi proses update
+    sleep 5
+    res1
 }
 
 # ===============================
@@ -90,18 +75,42 @@ res1() {
 }
 
 # ===============================
-# MAIN SCRIPT
+# MAIN MENU
 # ===============================
-clear
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e " \e[1;97;101m          UPDATE SCRIPT        \e[0m"
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e ""
+main_menu() {
+    clear
+    echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    # Neon rainbow header animasi
+    for ((i=0;i<50;i++)); do
+        color=${NEON_COLORS[$RANDOM % ${#NEON_COLORS[@]}]}
+        echo -ne "${color}━${NC}"
+        sleep 0.005
+    done
+    echo -e ""
+    echo -e " \e[1;97;101m        METS STORE - ULTRA MENU        \e[0m"
+    for ((i=0;i<50;i++)); do
+        color=${NEON_COLORS[$RANDOM % ${#NEON_COLORS[@]}]}
+        echo -ne "${color}━${NC}"
+        sleep 0.005
+    done
+    echo -e "\n"
 
-echo -e "  \033[1;91mUpdating script service...\033[1;37m"
-fun_bar 'res1'
+    # Menu Items neon
+    echo -e "${CYAN} 1${NC}) Update Script ⚡"
+    echo -e "${GREEN} 2${NC}) Menu Tools 💻"
+    echo -e "${YELLOW} 3${NC}) Settings 🔄"
+    echo -e "${RED} 4${NC}) Exit ✔️"
+    echo -e ""
 
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e ""
-read -n 1 -s -r -p "Press [ Enter ] to back to menu"
-menu
+    read -p "Select menu: " option
+    case $option in
+        1) echo -e "\n  \033[1;91mUpdating script service...\033[1;37m"; fun_bar "update_task"; main_menu ;;
+        2) echo -e "\n  \033[1;92mOpening Tools Menu...\033[1;37m"; sleep 1; main_menu ;;
+        3) echo -e "\n  \033[1;93mOpening Settings...\033[1;37m"; sleep 1; main_menu ;;
+        4) echo -e "\n  \033[1;91mExiting...✔️\033[0m"; exit ;;
+        *) echo -e "\n  ${RED}Invalid option${NC}"; sleep 1; main_menu ;;
+    esac
+}
+
+# Jalankan Main Menu
+main_menu
