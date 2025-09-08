@@ -18,11 +18,7 @@ fun_bar() {
     bar_length=20
     wave_pos=0
 
-    # Jalankan task di background
-    (
-        $CMD >/dev/null 2>&1
-        touch $HOME/fim
-    ) &
+    ( $CMD >/dev/null 2>&1; touch $HOME/fim ) &
 
     tput civis
     while [[ ! -e $HOME/fim ]]; do
@@ -32,12 +28,11 @@ fun_bar() {
             [[ $i -eq $wave_pos ]] && bar+="${color}#${NC}" || bar+="${color}-${NC}"
         done
         spinner=${EMOTICONS[$RANDOM % ${#EMOTICONS[@]}]}
-        echo -ne "\r  \033[1;37mUpdating Script \033[1;37m[${bar}] ${spinner}"
+        echo -ne "\r  \033[1;37mUpdating Script [${bar}] ${spinner}"
         wave_pos=$(( (wave_pos + 1) % bar_length ))
         sleep 0.08
     done
 
-    # Full bar finish + tanda berhasil
     final_bar=""
     for ((i=0;i<bar_length;i++)); do
         color=${NEON_COLORS[$RANDOM % ${#NEON_COLORS[@]}]}
@@ -106,9 +101,6 @@ main_menu() {
     header_animate
 
     echo -e "${CYAN} 1${NC}) Update Script ⚡"
-    echo -e "${GREEN} 2${NC}) Menu Tools 💻"
-    echo -e "${YELLOW} 3${NC}) Settings 🔄"
-    echo -e "${RED} 4${NC}) Back / Exit ✔️"
     echo -e ""
 
     read -p "Select menu: " option
@@ -116,29 +108,8 @@ main_menu() {
         1)
             echo -e "\n  \033[1;91mUpdating script service...\033[1;37m"
             fun_bar "update_task"
-            echo -e "\n  Update finished! Select option 4 to return to menu."
-            while true; do
-                read -p "Press 4 to go back: " back
-                if [[ "$back" == "4" ]]; then
-                    main_menu
-                    break
-                else
-                    echo -e "${RED}Invalid input! Press 4 to return.${NC}"
-                fi
-            done
-            ;;
-        2)
-            echo -e "\n  \033[1;92mOpening Tools Menu...\033[1;37m"
-            sleep 1
-            main_menu
-            ;;
-        3)
-            echo -e "\n  \033[1;93mOpening Settings...\033[1;37m"
-            sleep 1
-            main_menu
-            ;;
-        4)
-            echo -e "\n  \033[1;91mReturning to menu...✔️\033[0m"
+            echo -e "\n  Update finished! Press Enter to return to menu."
+            read -p ""
             main_menu
             ;;
         *)
